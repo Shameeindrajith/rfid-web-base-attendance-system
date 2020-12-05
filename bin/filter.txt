@@ -1,0 +1,41 @@
+<?php 
+if (isset($_POST["dates"], $_POST["dates2"])) {
+	$connect=mysqli_connect("localhost","root","","iotproject");
+	$output='';
+	$query="
+	SELECT * FROM main where datess BETWEEN '".$_POST["dates"]."' AND '".$_POST["dates2"]."' ";
+	$result = mysqli_query($connect,$query);
+	$output.=
+	"<table class='table table-bordered'>
+			<tr>
+				<th width='30%'>ID</th>
+				<th width='30%'>NAME</th>
+				<th width='30%'>DATE</th>
+			</tr>"
+	;
+	if (mysqli_num_rows($result)>0) {
+		while ($row = mysqli_fetch_array($result)) {
+			$output .= 
+			"<tr>
+			  <td>". $row["id"] ."</td>
+			  <td>". $row["name"] ."</td>
+			  <td>". $row["datess"] ."</td>
+			</tr>"
+			;
+		}
+		
+	}
+	else{
+		$output .='
+             <tr>
+                <td colspan="3">No Date Found</td>
+             </tr>
+		';
+	}
+
+	$output .='</table>';
+	echo $output;
+
+}
+
+?>

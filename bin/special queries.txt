@@ -1,0 +1,9 @@
+SELECT *
+FROM events
+WHERE event_date BETWEEN '2018-01-01 12:00:00' AND '2018-01-01 23:30:00';
+
+
+https://popsql.com/learn-sql/mysql/how-to-query-date-and-time-in-mysql/
+
+
+https://www.w3resource.com/mysql/date-and-time-functions/mysql-weekday-function.php
